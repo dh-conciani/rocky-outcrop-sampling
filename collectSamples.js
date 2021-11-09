@@ -1,3 +1,6 @@
+// sample code to collect reference points of rocky outcrop 
+// issue/bug write to dhemerson.costa@ipam.org.br
+
 // import cerrado
 var regions = ee.FeatureCollection('users/dh-conciani/vectors/cerrado_regions_without_overlap');
 var biomes = ee.Image('projects/mapbiomas-workspace/AUXILIAR/biomas-2019-raster');
@@ -61,4 +64,3 @@ Map.addLayer(col6, vis, 'Collection 6.0 ' + year, false);
 
 // regions to inspect
 //Map.addLayer(region, {}, 'region');
-
