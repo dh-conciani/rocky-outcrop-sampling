@@ -1556,6 +1556,22 @@ var afloramento = /* color: #d63000 */ee.Geometry.MultiPoint(
 // plot points
 Map.addLayer(afloramento, {}, 'pontos');
 
-// 
+// sample image
+var sampled = toSample.sample({
+  region: afloramento,
+  geometries: false,
+  scale: 30,
+});
 
+// print
+print ('n samples', sampled.size());
+print ('first', sampled.first());
+
+// export to gdrive
+Export.table.toDrive({
+  collection: sampled,
+  description: 'sampled_rocky',
+  folder: 'EXPORT',
+  fileFormat: 'CSV'
+});
 
