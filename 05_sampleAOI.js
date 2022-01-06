@@ -24,6 +24,10 @@ var landsat = ee.ImageCollection('projects/nexgenmap/MapBiomas2/LANDSAT/mosaics'
                   .filterMetadata('version', 'equals', '2')
                   .mosaic();
 
+// areas protegidas
+var aps = ee.FeatureCollection('projects/mapbiomas-workspace/AUXILIAR/areas-protegidas')
+            .filterBounds(biomas.filterMetadata('Bioma', 'equals', 'Cerrado'));
+
 // palheta de cores mapbiomas
 // import the color ramp module from mapbiomas 
 var palettes = require('users/mapbiomas/modules:Palettes.js');
@@ -56,6 +60,9 @@ Map.addLayer(biomas, {}, 'biomas', false);
 
 // regioes
 Map.addLayer(regioes_classificacao, {}, 'regiões', false);
+
+// areas protegidas
+Map.addLayer(aps, {}, 'areas protegidas');
 
 // buffer
 Map.addLayer(pontos_buffer, {}, 'buffer');
